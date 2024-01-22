@@ -1,36 +1,16 @@
-name: CI/CD
+name: Docker Build and Push to Docker hub
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build and test
-      run: npm run build && npm test
-
-  dockerize:
-    runs-on: ubuntu-latest
-
-    needs: build
-
-    steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
     - name: Login to Docker Hub
@@ -39,10 +19,13 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker images
+    - name: Build and Push Docker Images
       run: |
-        docker build -t your-frontend-image-name .
-        docker push your-frontend-image-name
+        docker build -t sailesh081/frontend:latest -f frontend/Dockerfile .
+        docker build -t sailesh081/backend:latest -f backend/Dockerfile .
+        docker build -t sailesh081/db:latest -f db/Dockerfile .
 
-        docker build -t your-backend-image-name .
-        docker push your-backend-image-name
+        docker push sailesh081/frontend:latest
+        docker push sailesh081/backend:latest
+        docker push sailesh081/db:latest
+

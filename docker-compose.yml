@@ -6,15 +6,19 @@ services:
       context: ./frontend
     ports:
       - "3000:3000"
+    network_mode: bridge
 
   backend:
     build:
       context: ./backend
     ports:
       - "3001:3001"
+    network_mode: bridge
 
   database:
     build:
-      context: ./database
+      context: ./db
     ports:
       - "1433:1433"
+    network_mode: bridge
+

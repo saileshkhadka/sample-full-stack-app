@@ -1,6 +1,8 @@
-FROM mcr.microsoft.com/mssql/server
+FROM mcr.microsoft.com/mssql/server:2019-latest
 
-ENV SA_PASSWORD=Sailesh@2024?
 ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=Sailesh@2024?
+ENV MSSQL_PID=Express
 
-COPY init.sql /docker-entrypoint-initdb.d/
+EXPOSE 1433
+
