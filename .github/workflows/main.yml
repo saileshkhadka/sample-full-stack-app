@@ -21,9 +21,9 @@ jobs:
 
     - name: Build and Push Docker Images
       run: |
-        docker build -t sailesh081/frontend:latest -f frontend/Dockerfile .
-        docker build -t sailesh081/backend:latest -f backend/Dockerfile .
-        docker build -t sailesh081/db:latest -f db/Dockerfile .
+        docker build -t sailesh081/frontend:latest -f frontend/Dockerfile frontend
+        docker build -t sailesh081/backend:latest -f backend/Dockerfile backend
+        docker build -t sailesh081/db:latest -f db/Dockerfile db
 
         docker push sailesh081/frontend:latest
         docker push sailesh081/backend:latest
