@@ -49,8 +49,8 @@ But first need to login to Azure using the Azure CLI. If it runs without first a
 So to login the ac
 
 
-az login --tenant <tenant ID>
-az account set --subscription <subscription ID>
+- az login --tenant <tenant ID>
+- az account set --subscription <subscription ID>
 
 once authenticated,
 
@@ -59,22 +59,22 @@ Run terraform command to apply the changes
 To initialize the work dir
 
 
-terraform init 
+- terraform init 
 
 We can plan the overall infrastructure without applying 
 
 
-terraform plan 
+- terraform plan 
 
 To create or updates infrastructure depending on the configuration files. By default, a plan will be generated first and will need to be approved before it is applied.
 
 
-terraform apply 
+- terraform apply 
 
 If we need to apply without prompting yes 
 
 
-terraform apply -auto-approve
+- terraform apply -auto-approve
 
 
 
